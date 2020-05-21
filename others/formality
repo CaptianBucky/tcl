@@ -1,0 +1,19 @@
+proc show_user_match {tile instance prefix postfix} {
+	global all_split_user_match
+	##"(\S+)${prefix}(\S+)_\d+${postfix}"
+	set pattern "(\\S+)${prefix}(\\S+)_\\d+${postfix}"
+	if {[regexp $pattern $instance match pre ori]} {
+		lappend all_split_user_match "set_user_match -type cell r:/WORK/${tile}/${pre}${ori} i:/WORK/${tile}/${instance} /WORK/${tile}/${pre}${ori}"
+		}
+}
+
+set all_split_user_match ""
+set all_split_cells [get_object_name [get_flat_cells *${specail_split_pattern*
+foreach cell $all_split_cells {
+	set ref_name [get_attri [get_cells $cell] ref_name]
+	
+	##filter combanation logical
+	if [[regexp {bf|in|mux}] !=1} {
+		show_user_match $tile $instance $prefix $postfix
+	}
+}

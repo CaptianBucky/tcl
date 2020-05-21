@@ -1,0 +1,12 @@
+##timing derate
+set_timing_derate -early 0.03 -cell_check -incrment
+set_timing_derate -late 0.03 -cell_check -incrment
+
+set_timing_derate -early 0.097 -net_delay
+set_timing_derate -late 1.03 -net_delay
+
+##pocv_guardband means derate applied both mean and sigma value(ccs_lvf db),w/o pocv_guardband derate only applied on mean value
+set_timing_derate -early 1 -clock -cell_delay -rise -fall -pocv_guardband
+set_timing_derate -late 1 -clock -cell_delay -rise -fall -pocv_guardband
+set_timing_derate -early 1 -data -cell_delay -rise -fall -pocv_guardband
+set_timing_derate -late 1 -data -cell_delay -rise -fall -pocv_guardband

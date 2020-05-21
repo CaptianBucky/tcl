@@ -1,0 +1,7 @@
+set_releated_supply_net \
+-power
+-groud
+-object_list {port or leaf_pin}
+
+
+python£ºhttps://zhidao.baidu.com/question/1431306997262816819.html
